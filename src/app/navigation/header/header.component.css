@@ -7,3 +7,9 @@ a:hover,
 a:active{
   color: lightgrey;
 }
+
+
+
+ul {
+  list-style-type: none;
+}

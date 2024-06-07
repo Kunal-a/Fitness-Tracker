@@ -1,1 +1,31 @@
-<p>login works!</p>
+
+<section class="signup" >
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" fxLayoutGap="20px" fxLayout="column" fxLayoutAlign="center center">
+    <mat-form-field>
+      <mat-label>Enter Email</mat-label>
+      <input type="email" matInput placeholder="email" formControlName="email">
+      <mat-error *ngIf="myForm.get('email')?.hasError('required')">
+        Email is required.
+      </mat-error>
+      <mat-error *ngIf="myForm.get('email')?.hasError('pattern')">
+        Enter a valid email address.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter Password</mat-label>
+      <input type="password" matInput placeholder="password" formControlName="password">
+      <mat-error *ngIf="myForm.get('password')?.hasError('required')">
+        Password is required.
+      </mat-error>
+      <mat-error *ngIf="myForm.get('password')?.hasError('pattern')">
+        Password must be at least 3 characters , contain at least 1 symbol & number.
+      </mat-error>
+    </mat-form-field>
+
+
+
+
+    <button mat-raised-button  [disabled]="myForm.invalid" color="primary" type="submit">Submit</button>
+  </form>
+</section>
