@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class CurrentTrainingComponent implements OnInit {
 @Output() trainingExit= new EventEmitter();
 progress = 0;
+calories = 0;
 timer:any;
 
 constructor(private dilog:MatDialog  ,private trainingService: TrainingService,private router: Router){}
@@ -50,14 +51,15 @@ onStop() {
   clearInterval(this.timer);
   const dialogRef = this.dilog.open(StopTrainingComponent, {
     data: {
-      progress: this.progress
+      progress: this.progress,
+      calories: this.calories
     }
   });
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
       // this.trainingExit.emit();
-      this.trainingService.cancelExercise(this.progress);
+      this.trainingService.cancelExercise(this.progress , this.calories);
 
 
 

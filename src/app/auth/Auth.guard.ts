@@ -44,6 +44,7 @@ export class AuthGuard {
     } else {
       return this.router.navigate(['/login']);
     }
+
   }
 }
 
